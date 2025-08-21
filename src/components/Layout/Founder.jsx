@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import Ceo from "../../assets/ceo.png";
 
 export default function Founder() {
   return (
@@ -68,9 +69,9 @@ export default function Founder() {
           className="flex-1 w-[50%] max-[1025px]:w-full"
         >
           <img
-            src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            src={Ceo}
             alt="Founder"
-            className="rounded-2xl shadow-xl w-full h-[500px] object-cover"
+            className=" w-full h-auto object-cover"
           />
         </motion.div>
       </div>

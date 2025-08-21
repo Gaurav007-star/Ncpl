@@ -6,14 +6,14 @@ import { AiFillInstagram } from "react-icons/ai";
 
 const footerData = {
   company: {
-    name: "NTNL Construction",
+    name: "NcpL Construction",
     description:
       "Professional construction services with over 15 years of experience. Building dreams into reality with quality and excellence.",
     socials: [
-      { icon: "facebook", link: "#" },
-      { icon: "twitter", link: "#" },
-      { icon: "linkedin", link: "#" },
-      { icon: "instagram", link: "#" },
+      { icon: <FaMeta />, link: "#" },
+      { icon: <FaSquareXTwitter />, link: "#" },
+      { icon: <FaLinkedin />, link: "#" },
+      { icon: <AiFillInstagram />, link: "#" },
     ],
   },
   services: [
@@ -49,37 +49,40 @@ const footerData = {
 };
 
 export default function Footer() {
+
+  const date = new Date().getFullYear();
+
   return (
-    <footer className="bg-[#111827] text-gray-300 px-8 py-10">
-      <div className="max-w-7xl mx-auto flex flex-wrap justify-between gap-8">
+    <footer className="bg-[#111827] text-gray-300 px-[10vw] py-16"> {/* Increased padding for bigger footer */}
+      <div className="max-w-7xl mx-auto flex flex-wrap justify-between gap-12">
         {/* Company Info */}
-        <div className="flex-1 min-w-[220px]">
-          <h2 className="text-white text-xl font-clash mb-3">
+        <div className="flex-1 min-w-[240px]">
+          <h2 className="text-white text-2xl font-clash mb-4">
             {footerData.company.name}
           </h2>
-          <p className="font-plein text-sm leading-relaxed mb-4">
+          <p className="font-plein text-sm leading-relaxed mb-6">
             {footerData.company.description}
           </p>
-          <div className="flex gap-3">
+          <div className="flex gap-4">
             {footerData.company.socials.map((social, i) => (
               <a
                 key={i}
                 href={social.link}
-                className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-700 hover:bg-orange-500"
+                className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-700 text-white hover:bg-primary hover:text-white transition"
               >
-                <i className={`fab fa-${social.icon} text-white`} />
+                {social.icon}
               </a>
             ))}
           </div>
         </div>
 
         {/* Services */}
-        <div className="flex-1 min-w-[160px]">
-          <h3 className="text-white text-lg font-clash mb-3">Services</h3>
-          <ul className="space-y-2 font-plein text-sm">
+        <div className="flex-1 min-w-[180px]">
+          <h3 className="text-white text-lg font-clash mb-4">Services</h3>
+          <ul className="space-y-3 font-plein text-sm">
             {footerData.services.map((service, i) => (
               <li key={i}>
-                <a href="#" className="hover:text-orange-400">
+                <a href="#" className="hover:text-white transition">
                   {service}
                 </a>
               </li>
@@ -88,12 +91,12 @@ export default function Footer() {
         </div>
 
         {/* Company Links */}
-        <div className="flex-1 min-w-[160px]">
-          <h3 className="text-white text-lg font-clash mb-3">Company</h3>
-          <ul className="space-y-2 font-plein text-sm">
+        <div className="flex-1 min-w-[180px]">
+          <h3 className="text-white text-lg font-clash mb-4">Company</h3>
+          <ul className="space-y-3 font-plein text-sm">
             {footerData.companyLinks.map((item, i) => (
               <li key={i}>
-                <a href={item.link} className="hover:text-orange-400">
+                <a href={item.link} className="hover:text-white transition">
                   {item.label}
                 </a>
               </li>
@@ -102,11 +105,11 @@ export default function Footer() {
         </div>
 
         {/* Contact Info */}
-        <div className="flex-1 min-w-[220px]">
-          <h3 className="text-white text-lg font-clash mb-3">Contact Info</h3>
-          <ul className="space-y-3 font-plein text-sm">
+        <div className="flex-1 min-w-[240px]">
+          <h3 className="text-white text-lg font-clash mb-4">Contact Info</h3>
+          <ul className="space-y-4 font-plein text-sm">
             {footerData.contact.map((item, i) => (
-              <li key={i} className="flex gap-2 items-start">
+              <li key={i} className="flex gap-3 items-start">
                 {item.icon}
                 <span>{item.text}</span>
               </li>
@@ -116,16 +119,16 @@ export default function Footer() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="mt-10 pt-5 border-t border-gray-700 flex flex-wrap justify-between text-sm font-plein text-gray-400">
-        <p>© 2024 NTNL Construction. All rights reserved.</p>
-        <div className="flex gap-5">
-          <a href="#" className="hover:text-orange-400">
+      <div className="mt-12 pt-6 border-t border-gray-700 flex flex-wrap justify-between text-sm font-plein text-gray-400">
+        <p>© {date} NcpL Construction. All rights reserved.</p>
+        <div className="flex gap-6">
+          <a href="#" className="hover:text-white transition">
             Privacy Policy
           </a>
-          <a href="#" className="hover:text-orange-400">
+          <a href="#" className="hover:text-white transition">
             Terms of Service
           </a>
-          <a href="#" className="hover:text-orange-400">
+          <a href="#" className="hover:text-white transition">
             Sitemap
           </a>
         </div>
