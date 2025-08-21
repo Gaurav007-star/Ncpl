@@ -103,7 +103,7 @@ const Milestone = () => {
               variants={fadeRight}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-6 py-2 rounded-md bg-primary text-white font-plein shadow-md"
+              className="px-6 py-2 rounded-md bg-primary text-white font-plein cursor-pointer"
             >
               Learn More
             </motion.button>
@@ -116,7 +116,7 @@ const Milestone = () => {
                 backgroundColor: "rgba(255,255,255,0.1)"
               }}
               whileTap={{ scale: 0.95 }}
-              className="px-6 py-2 rounded-md border border-primary text-primary font-plein"
+              className="px-6 py-2 rounded-md border border-primary text-primary font-plein cursor-pointer"
             >
               Contact →
             </motion.button>
@@ -134,7 +134,7 @@ const Milestone = () => {
         <img
           src="https://images.pexels.com/photos/7937714/pexels-photo-7937714.jpeg?_gl=1*1qgy2yr*_ga*MjM4MzU3MjQyLjE3NTQ1NjU2Mzk.*_ga_8JE65Q40S6*czE3NTU3NjQ1NzIkbzUkZzEkdDE3NTU3NjQ2NjYkajQwJGwwJGgw"
           alt="Milestone"
-          className="rounded-2xl shadow-md w-full h-[600px] object-cover"
+          className="rounded-2xl shadow-md w-full h-[600px] object-cover grayscale hover:grayscale-0 duration-500 cursor-pointer"
         />
       </motion.div>
     </div>

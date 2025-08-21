@@ -7,18 +7,20 @@ import Milestone from "../Layout/Milestone";
 import VisionMission from "../Layout/VisionMission";
 import Founder from "../Layout/Founder";
 import Footer from "../Layout/Footer";
+import InfinitySlider from "../Layout/InfinitySlider";
 
 const Home = () => {
   return (
     <div className="w-full h-max">
       <Navbar />
-      <Hero/>
-      <VisionMission/>
-      <Service/>
-      <Milestone/>
-      <Projects/>
-      <Founder/>
-      <Footer/>
+      <Hero />
+      <Milestone />
+      <InfinitySlider/>
+      <VisionMission />
+      <Service />
+      <Projects />
+      <Founder />
+      <Footer />
     </div>
   );
 };

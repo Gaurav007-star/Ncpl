@@ -1,5 +1,13 @@
 import React from "react";
 import { motion } from "framer-motion";
+import IndustrialCivil from "../../assets/services/Industrial Civil Construction.jpg";
+import Turnkey from "../../assets/services/Turnkey Project Execution.jpg";
+import RoadInfra from "../../assets/services/Road Infrastructure.jpg";
+import SiteDevelopment from "../../assets/services/Site Development & Infrastructure.jpg";
+import preEngineer from "../../assets/services/Pre-Engineered Buildings (PEB).jpg";
+import ExternalDevelopment from "../../assets/services/External Development & Finishing.jpg";
+import Renovation from "../../assets/services/Renovation & Expansion Projects.jpg";
+import ProjectManagement from "../../assets/services/Project Management & Consulting.jpg";
 
 // Services Data (all with images now)
 const services = [
@@ -7,57 +15,49 @@ const services = [
     title: "Industrial Civil Construction",
     description:
       "Designing and building infrastructure such as roads, bridges, buildings, and water systems with durability and precision.",
-    image:
-      "https://images.unsplash.com/photo-1508450859948-4e04fabaa4ea?w=600&auto=format&fit=crop&q=60"
+    image: IndustrialCivil
   },
   {
     title: "Turnkey Project Execution",
     description:
       "End-to-end solutions, from design to delivery, ensuring seamless, timely, and high-quality results.",
-    image:
-      "https://images.pexels.com/photos/1325725/pexels-photo-1325725.jpeg?_gl=1*m2hnqo*_ga*MjM4MzU3MjQyLjE3NTQ1NjU2Mzk.*_ga_8JE65Q40S6*czE3NTU3NzYxNTckbzYkZzEkdDE3NTU3NzYxOTQkajIzJGwwJGgw"
+    image: Turnkey
   },
   {
     title: "Road Infrastructure",
     description:
       "Delivering robust road infrastructure from planning to construction for safe, sustainable, and efficient networks.",
-    image:
-      "https://images.unsplash.com/photo-1508450859948-4e04fabaa4ea?w=600&auto=format&fit=crop&q=60"
+    image: RoadInfra
   },
   {
     title: "Site Development & Infrastructure",
     description:
       "Preparing land with utilities, drainage, and access to ensure efficient and safe construction readiness.",
-    image:
-      "https://images.pexels.com/photos/6474312/pexels-photo-6474312.jpeg?_gl=1*nbpdo0*_ga*MjM4MzU3MjQyLjE3NTQ1NjU2Mzk.*_ga_8JE65Q40S6*czE3NTU3NzYxNTckbzYkZzEkdDE3NTU3NzYzNTEkajM4JGwwJGgw"
+    image: SiteDevelopment
   },
   {
     title: "Pre-Engineered Buildings (PEB)",
     description:
       "Fast, durable, and cost-effective steel structures ideal for warehouses, factories, and more.",
-    image:
-      "https://images.unsplash.com/photo-1603239564387-c5b5ea6f635e?q=80&w=800&auto=format&fit=crop"
+    image: preEngineer
   },
   {
     title: "External Development & Finishing",
     description:
       "Crafting landscapes, facades, and green spaces that enhance both functionality and aesthetics.",
-    image:
-      "https://images.unsplash.com/photo-1508450859948-4e04fabaa4ea?w=600&auto=format&fit=crop&q=60"
+    image: ExternalDevelopment
   },
   {
     title: "Renovation & Expansion Projects",
     description:
       "Transforming existing structures with smart renovations and strategic expansions for better utility and longevity.",
-    image:
-      "https://images.unsplash.com/photo-1603239564387-c5b5ea6f635e?q=80&w=800&auto=format&fit=crop"
+    image: Renovation
   },
   {
     title: "Project Management & Consulting",
     description:
       "Managing projects from planning to onsite coordination with cost control and seamless execution.",
-    image:
-      "https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=800&auto=format&fit=crop"
+    image: ProjectManagement
   }
 ];
 
@@ -107,18 +107,26 @@ export default function Service() {
           <motion.div
             key={index}
             variants={cardVariants}
-            className="overflow-hidden rounded-2xl shadow-md ring-1 ring-gray-200 bg-white flex flex-col w-[400px] h-[500px] cursor-pointer"
+            whileHover={{ scale: 1.03, y: -5 }}
+            transition={{ type: "spring", stiffness: 200, damping: 15 }}
+            className="overflow-hidden rounded-2xl ring-1 ring-gray-200 bg-white flex flex-col w-[400px] h-[500px] cursor-pointer"
           >
             <div className="relative w-full h-full overflow-hidden">
-              {/* Image */}
-              <img
+              {/* Image with zoom effect */}
+              <motion.img
                 src={service.image}
                 alt={service.title}
                 className="w-full h-full object-cover"
+                whileHover={{ scale: 1.1 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
               />
 
-              {/* Overlay always visible */}
-              <div className="absolute inset-0 bg-black/40 flex items-end">
+              {/* Overlay always visible but with subtle hover fade */}
+              <motion.div
+                className="absolute inset-0 bg-[#000000a8] flex items-end"
+                whileHover={{backdropFilter:blur("2px") }}
+                transition={{ duration: 0.4 }}
+              >
                 <div className="p-6 text-white">
                   <h3 className="text-[22px] font-bold mb-1 font-clash">
                     {service.title}
@@ -127,7 +135,7 @@ export default function Service() {
                     {service.description}
                   </p>
                 </div>
-              </div>
+              </motion.div>
             </div>
           </motion.div>
         ))}

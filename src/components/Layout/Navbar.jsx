@@ -72,7 +72,7 @@ const Navbar = () => {
         <img
           src={logo}
           alt="logo"
-          className="w-auto h-[150px] object-cover"
+          className="w-auto h-[100px] object-cover"
           onClick={() => navigate("/")}
         />
       </div>

@@ -5,23 +5,23 @@ import construct02 from "../../assets/construct03.jpg";
 
 export default function Hero() {
   return (
-    <section className="relative bg-white overflow-hidden">
+    <section className="relative overflow-hidden">
       {/* vertical divider like the mock */}
       <span className="pointer-events-none absolute inset-y-10 left-1/2 hidden md:block w-px bg-neutral-200/80" />
 
-      <div className="mx-auto max-w-7xl px-6 md:px-10 pt-14 md:pt-24">
+      <div className=" px-[10vw] pt-14 ">
         {/* top row */}
         <div className="relative grid grid-cols-1 md:grid-cols-2 items-start gap-10">
           {/* Left: headline + button */}
           <motion.div
-            className="md:pr-10"
+            className=""
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             viewport={{ once: true, amount: 0.3 }}
           >
             <motion.h1
-              className="text-4xl md:text-6xl font-extrabold font-clash text-primary leading-[1.05] tracking-tight"
+              className="text-4xl md:text-6xl font-extrabold font-clash text-primary leading-[1.05] tracking-wider"
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, ease: "easeOut" }}
@@ -39,7 +39,7 @@ export default function Hero() {
               transition={{duration: 0.2, ease: "easeOut" }}
               whileHover={{scale:1.1}}
             >
-              All Projects <span aria-hidden>→</span>
+              Services <span aria-hidden>→</span>
             </motion.button>
           </motion.div>
 
