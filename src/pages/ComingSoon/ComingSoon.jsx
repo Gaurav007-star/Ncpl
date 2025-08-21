@@ -20,7 +20,7 @@ const ComingSoon = () => {
       </div>
       <div className="right w-[40%] max-[1300px]:w-full h-full p-10 max-[1300px]:px-20 max-[450px]:p-5">
         <DotLottieReact
-          src="https://lottie.host/d1c24b3b-7664-40de-919a-55a6a5e9a3e2/ZSyFkwW0F3.lottie"
+          src="https://lottie.host/1118f8a3-34c6-4997-8e3d-666ab595f16c/nDcXTxjvUc.lottie"
           loop
           autoplay
           className="w-full h-full"
