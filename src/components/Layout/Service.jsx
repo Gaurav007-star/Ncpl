@@ -107,7 +107,7 @@ export default function Service() {
           <motion.div
             key={index}
             variants={cardVariants}
-            className="overflow-hidden rounded-2xl shadow-md ring-1 ring-gray-200 bg-white flex flex-col h-[500px] cursor-pointer"
+            className="overflow-hidden rounded-2xl shadow-md ring-1 ring-gray-200 bg-white flex flex-col w-[400px] h-[500px] cursor-pointer"
           >
             <div className="relative w-full h-full overflow-hidden">
               {/* Image */}

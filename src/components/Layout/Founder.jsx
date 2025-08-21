@@ -3,10 +3,10 @@ import { motion } from "framer-motion";
 export default function Founder() {
   return (
     <section className="w-full py-20 px-[10vw]">
-      <div className="flex flex-col lg:flex-row items-center lg:items-start gap-16">
+      <div className="flex flex-col lg:flex-row items-center lg:items-start gap-16 ">
         
         {/* Left Side: Text Content */}
-        <div className="flex-1">
+        <div className="flex-1 w-[50%] max-[1025px]:w-full">
           {/* Heading */}
           <motion.h2
             initial={{ opacity: 0, y: -40 }}
@@ -65,7 +65,7 @@ export default function Founder() {
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, ease: "easeOut" }}
           viewport={{ once: true }}
-          className="flex-1"
+          className="flex-1 w-[50%] max-[1025px]:w-full"
         >
           <img
             src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"

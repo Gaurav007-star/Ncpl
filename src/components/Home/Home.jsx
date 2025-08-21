@@ -6,6 +6,7 @@ import Projects from "../Layout/Projects";
 import Milestone from "../Layout/Milestone";
 import VisionMission from "../Layout/VisionMission";
 import Founder from "../Layout/Founder";
+import Footer from "../Layout/Footer";
 
 const Home = () => {
   return (
@@ -17,6 +18,7 @@ const Home = () => {
       <Milestone/>
       <Projects/>
       <Founder/>
+      <Footer/>
     </div>
   );
 };
