@@ -7,8 +7,8 @@ const HomePage = () => {
     <>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Ncpl</title>
-        <meta name="description" content="Nested component" />
+        <title>NTNL Pvt. Ltd. | Civil & Industrial Projects</title>
+        <meta name="description" content="Leading civil construction company, delivering industrial, infrastructure & turnkey projects with quality, safety & on-time execution." />
       </Helmet>
       <Home />
     </>

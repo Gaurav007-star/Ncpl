@@ -1,9 +1,10 @@
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
-import { FaMeta } from "react-icons/fa6";
+import { FaFacebook } from "react-icons/fa6";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { FaLinkedin } from "react-icons/fa6";
-import { AiFillInstagram } from "react-icons/ai";
+import { RiInstagramFill } from "react-icons/ri";
 import Logo from "../../assets/whiteLogo.png";
+import { Link } from "react-router";
 
 const footerData = {
   company: {
@@ -11,10 +12,12 @@ const footerData = {
     description:
       "Professional construction services with over 20 years of experience. Building dreams into reality with quality and excellence.",
     socials: [
-      { icon: <FaMeta />, link: "#" },
-      { icon: <FaSquareXTwitter />, link: "#" },
-      { icon: <FaLinkedin />, link: "#" },
-      { icon: <AiFillInstagram />, link: "#" }
+      { icon: <FaFacebook />, link: "https://www.facebook.com/profile.php?id=61579343348102" },
+      { icon: <FaSquareXTwitter />, link: "https://x.com/NTNL_19" },
+      {
+        icon: <FaLinkedin />,
+        link: "https://www.linkedin.com/company/ntnl-construction-pvt-ltd/"
+      },
     ]
   },
   services: [
@@ -24,10 +27,9 @@ const footerData = {
     "Infrastructure Projects"
   ],
   companyLinks: [
-    { label: "About Us", link: "#" },
-    { label: "Our Projects", link: "#" },
-    { label: "Careers", link: "#" },
-    { label: "Blog & News", link: "#" }
+    { label: "About Us", link: "/about" },
+    { label: "Our Projects", link: "/project" },
+    { label: "Contact us", link: "/contact" }
   ],
   contact: [
     {
@@ -41,10 +43,6 @@ const footerData = {
     {
       icon: <Mail className="w-4 h-4 " />,
       text: "info@ntnlconstruction.com"
-    },
-    {
-      icon: <Clock className="w-4 h-4 " />,
-      text: "Mon - Fri: 8:00 AM - 6:00 PM"
     }
   ]
 };
@@ -56,7 +54,7 @@ export default function Footer() {
     <footer className="bg-[#111827] text-gray-300 px-[10vw] py-16">
       {" "}
       {/* Increased padding for bigger footer */}
-      <div className="max-w-7xl mx-auto flex flex-wrap justify-between gap-12">
+      <div className="w-full mx-auto flex flex-wrap justify-between gap-12">
         {/* Company Info */}
         <div className="flex-1 min-w-[240px]">
           <h2 className="text-white text-2xl font-clash mb-4">
@@ -70,6 +68,7 @@ export default function Footer() {
               <a
                 key={i}
                 href={social.link}
+                target="_blank"
                 className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-700 text-white hover:bg-primary hover:text-white transition"
               >
                 {social.icon}
@@ -84,9 +83,9 @@ export default function Footer() {
           <ul className="space-y-3 font-plein text-sm">
             {footerData.services.map((service, i) => (
               <li key={i}>
-                <a href="#" className="hover:text-white transition">
+                <Link to={"/service"} className="hover:text-white transition">
                   {service}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -98,9 +97,9 @@ export default function Footer() {
           <ul className="space-y-3 font-plein text-sm">
             {footerData.companyLinks.map((item, i) => (
               <li key={i}>
-                <a href={item.link} className="hover:text-white transition">
+                <Link to={item.link} className="hover:text-white transition">
                   {item.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -121,13 +120,18 @@ export default function Footer() {
       </div>
       {/* Bottom Bar */}
       <div className="mt-12 pt-6 border-t border-gray-700 flex flex-wrap justify-between text-sm font-plein text-gray-400">
-        <p>© {date} National Construction. All rights reserved.</p>
+        <p>
+          © {date} NTNL Construction. All rights reserved.{" "}
+          <a href="https://www.techscooper.com/" target="_blank" className="hover:text-white transition">
+            Designed by TechScooper
+          </a>
+        </p>
         <div className="flex gap-6">
-          <a href="#" className="hover:text-white transition">
+          <a href="/privacy-policy" target="_blank" className="hover:text-white transition">
             Privacy Policy
           </a>
-          <a href="#" className="hover:text-white transition">
-            Terms of Service
+          <a href="/terms-conditions" target="_blank" className="hover:text-white transition">
+            Terms and Conditions
           </a>
           <a href="#" className="hover:text-white transition">
             Sitemap

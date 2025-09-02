@@ -1,106 +1,79 @@
 import React from "react";
 import { motion } from "framer-motion";
 import construct01 from "../../assets/construct01.jpg";
-import construct02 from "../../assets/construct03.jpg";
+import Button from "../ui/userCreate/Button";
+import ArrowButton from "../ui/userCreate/ArrowButton";
+import { SpinningText } from "../magicui/spinning-text";
+import HomeBackground from "../../assets/homeBackgroud.jpg";
+import { RainbowButton } from "@/components/magicui/rainbow-button";
+import { useNavigate } from "react-router";
+import backgroundVideo from "../../assets/backgroundVideo.mp4";
 
 export default function Hero() {
+
+
+  const navigate = useNavigate();
+
+
   return (
     <section className="relative overflow-hidden">
-      {/* vertical divider like the mock */}
-      <span className="pointer-events-none absolute inset-y-10 left-1/2 hidden md:block w-px bg-neutral-200/80" />
-
-      <div className=" px-[10vw] pt-14 ">
-        {/* top row */}
-        <div className="relative grid grid-cols-1 md:grid-cols-2 items-start gap-10">
-          {/* Left: headline + button */}
-          <motion.div
-            className=""
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            viewport={{ once: true, amount: 0.3 }}
-          >
-            <motion.h1
-              className="text-4xl md:text-6xl font-extrabold font-clash text-primary leading-[1.05] tracking-wider"
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, ease: "easeOut" }}
-            >
-              EXPERT <br />
-              CONSTRUCTION <br />
-              SERVICES FOR <br />
-              EVERY PROJECT
-            </motion.h1>
-
-            <motion.button
-              className="mt-8 inline-flex items-center gap-2 rounded-md border-2 border-primary text-primary px-6 py-3 cursor-pointer"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{duration: 0.2, ease: "easeOut" }}
-              whileHover={{scale:1.1}}
-            >
-              Services <span aria-hidden>→</span>
-            </motion.button>
-          </motion.div>
-
-          {/* Right: top image */}
-          <motion.div
-            className="md:pl-10"
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            viewport={{ once: true, amount: 0.3 }}
-          >
-            <div className="overflow-hidden rounded-xl shadow-sm ring-1 ring-black/5">
-              <motion.img
-                src={construct01}
-                alt="high-rise construction with cranes"
-                className="block h-64 md:h-80 w-full object-cover filter grayscale hover:grayscale-0 cursor-pointer duration-500"
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.1, ease: "easeInOut" }}
-              />
-            </div>
-          </motion.div>
-
-          {/* circle arrow badge over the seam */}
-          <div className="pointer-events-none absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 hidden md:flex">
-            <motion.div
-              className="flex h-20 w-20 items-center justify-center rounded-full bg-white shadow-xl ring-1 ring-black/5"
-              initial={{ scale: 0, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
-              transition={{ delay: 0.6, type: "spring", stiffness: 200 }}
-              viewport={{ once: true, amount: 0.4 }}
-            >
-              <svg
-                aria-hidden="true"
-                viewBox="0 0 24 24"
-                className="h-7 w-7 text-primary"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
-                <path d="M7 17L17 7M9 7h8v8" />
-              </svg>
-            </motion.div>
-          </div>
-        </div>
-
-        {/* bottom image spanning both columns */}
+      <div className="px-[10vw] max-[450px]:px-5">
         <motion.div
-          className="mt-12"
+          className="relative mt-5"
           initial={{ opacity: 0, y: 60 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeInOut" }}
           viewport={{ once: true, amount: 0.3 }}
         >
-          <div className="overflow-hidden rounded-xl shadow-sm ring-1 ring-black/5">
-            <motion.img
-              src={construct02}
+          <div className="relative overflow-hidden rounded-xl ">
+            <div className="overlay absolute w-full h-full bg-black/20 top-0 left-0">
+
+            </div>
+            {/* Background Image */}
+            <video
+              src={backgroundVideo}
+              loop
+              autoPlay
+              muted
               alt="workers on site"
-              className="block h-[360px] md:h-[460px] w-full object-cover object-top filter grayscale hover:grayscale-0 cursor-pointer duration-500"
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.1, ease: "easeInOut" }}
+              className="block h-[360px] md:h-[700px] w-full object-cover object-top"
             />
+
+            <div className="absolute bottom-0 flex items-center justify-center w-[200px] max-[450px]:w-[120px] h-[200px] max-[450px]:h-[120px]">
+              {/* Spinning circular text */}
+              <SpinningText
+                className="text-[16px] max-[450px]:text-[10px] tracking-wider text-white z-[500]"
+                duration={12}
+                radius={8}
+              >
+                Safety First • Quality Always • Success Together •
+              </SpinningText>
+
+              {/* Arrow in the center */}
+              <div className="absolute z-[500] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                <ArrowButton route="/about" title="About Us" />
+              </div>
+            </div>
+
+            {/* Bottom Overlay Section */}
+            <div className="absolute bottom-0 left-0 flex flex-col font-plein items-end w-full p-6 md:p-10 text-white  rounded-b-xl bg-gradient-to-t from-black/60 via-black/50 to-transparent">
+              {/* Headline */}
+              <section className="flex flex-col items-end min-[1025px]:text-[150px] max-[1025px]:text-[80px] max-[450px]:text-[40px] font-medium font-clash mb-15 max-[450px]:mb-10 h-max w-full pl-2 leading-[80%] ">
+                <h1>We build,</h1>
+                <h2 className="text-[200px]  max-[1025px]:text-[120px] max-[450px]:text-[60px] flex items-center  ">You grow</h2>
+
+              </section>
+
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ duration: 0.2 }}
+                  className="border-2 rounded-md px-6 max-[450px]:px-3 py-3 flex items-center gap-2 mb-15 max-[450px]:mb-5 mr-5 max-[450px]:mr-0 font-clash font-semibold text-[22px] max-[450px]:text-[16px] text-white cursor-pointer "
+                  onClick={()=>navigate("/service")}
+                >
+                  Our Services
+                </motion.button>
+
+            </div>
           </div>
         </motion.div>
       </div>
