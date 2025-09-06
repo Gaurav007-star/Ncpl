@@ -133,7 +133,7 @@ export default function Footer() {
           <a href="/terms-conditions" target="_blank" className="hover:text-white transition">
             Terms and Conditions
           </a>
-          <a href="#" className="hover:text-white transition">
+          <a href="/sitemap.xml" className="hover:text-white transition">
             Sitemap
           </a>
         </div>
