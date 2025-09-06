@@ -1,9 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router"; // if you use react-router-dom, change this import
 import Navbar from "../Layout/Navbar";
 import TopSection from "../Layout/TopSection";
-import InfinitySlider from "../Layout/InfinitySlider";
-import CtaSection from "../Layout/CtaSection";
 import Footer from "../Layout/Footer";
 import ConstructionWorker from "../../assets/constructionWorker.jpg";
 import ContactTopImage from "../../assets/Contacts.jpg";
@@ -91,7 +89,64 @@ const ClientImages = [
   Client37
 ];
 
+import validator from "validator";
+import axios from "axios";
+import { toast } from "react-toastify";
+
 const Contact = () => {
+  const [contactData, setContact] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: ""
+  });
+
+  const [notValid, setValid] = useState(false);
+  const [errMessage, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+  const formRef = useRef(null);
+
+  const InputHandler = (e) => {
+    setContact({ ...contactData, [e.target.name]: e.target.value });
+  };
+
+  // FORM SUBMIT HANDLER
+  const FormSubmitHandler = async (e) => {
+    e.preventDefault();
+    if (!validator.isEmail(contactData.email)) {
+      setValid(true);
+      setMessage("Provide a valid email");
+      return;
+    }
+    if (!validator.isMobilePhone(contactData.phone)) {
+      setValid(true);
+      setMessage("Provide a valid phone number");
+      return;
+    }
+
+    setLoading(true);
+
+    // EMAIL SEND API CALL
+    try {
+      const { data } = await axios.post(
+        `https://ncpl-uat-py8l.vercel.app/api/sendmail`,
+        contactData
+      );
+      toast.success(data?.message || "Message sent successfully");
+    } catch (error) {
+      toast.error(error.response?.data?.message || "Failed to send message");
+    }
+    setLoading(false);
+    setValid(false);
+    setMessage("");
+    setContact({
+      name: "",
+      email: "",
+      phone: "",
+      message: ""
+    });
+  };
+
   useEffect(() => {
     window.scrollTo({
       top: 0,
@@ -146,41 +201,64 @@ const Contact = () => {
               You can reach us anytime
             </p>
 
-            <form className="space-y-4">
-              <div className="flex gap-3">
-                <input
-                  type="text"
-                  placeholder="First name"
-                  className="w-1/2 border border-gray-300 bg-gray-50 rounded-lg p-3 font-plein text-secondary
+            <form
+              ref={formRef}
+              className="space-y-4"
+              onSubmit={FormSubmitHandler}
+            >
+              <input
+                type="text"
+                placeholder="Username"
+                name="name"
+                value={contactData.name}
+                required
+                className="w-full border border-gray-300 bg-gray-50 rounded-lg p-3 font-plein text-secondary
                            focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
-                />
-                <input
-                  type="text"
-                  placeholder="Last name"
-                  className="w-1/2 border border-gray-300 bg-gray-50 rounded-lg p-3 font-plein text-secondary focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
-                />
-              </div>
+                onChange={InputHandler}
+              />
               <input
                 type="email"
                 placeholder="Your email"
+                name="email"
+                value={contactData.email}
+                required
                 className="w-full border border-gray-300 bg-gray-50 rounded-lg p-3 font-plein text-secondary focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
+                onChange={InputHandler}
               />
               <input
                 type="text"
                 placeholder="Phone number"
+                name="phone"
+                value={contactData.phone}
+                required
                 className="w-full border border-gray-300 bg-gray-50 rounded-lg p-3 font-plein text-secondary focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
+                onChange={InputHandler}
               />
               <textarea
                 placeholder="How can we help?"
+                name="message"
+                value={contactData.message}
+                required
                 maxLength={120}
                 className="w-full border border-gray-300 bg-gray-50 rounded-lg p-3 font-plein text-secondary h-28 resize-none focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
+                onChange={InputHandler}
               ></textarea>
+              {notValid && (
+                <div className="status-box w-full  rounded-md p-4 text-center bg-[#f2f2f2]">
+                  <h1 className="text-primary font-plein">{errMessage}</h1>
+                </div>
+              )}
 
               <button
                 type="submit"
                 className="w-full bg-primary text-white py-3 rounded-xl font-clash hover:opacity-90 transition cursor-pointer"
+                disabled={loading}
               >
-                Submit
+                {loading ? (
+                  <span className="loading loading-dots loading-md"></span>
+                ) : (
+                  <span>Submit</span>
+                )}
               </button>
 
               <p className="text-xs font-plein text-secondary text-center">
